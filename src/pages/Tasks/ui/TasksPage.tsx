@@ -1,4 +1,5 @@
-import { TaskWidget } from "widgets/Tasks"
+import { TaskWidget } from "widgets/task"
+
 
 export const TaskPage = () => {
 
