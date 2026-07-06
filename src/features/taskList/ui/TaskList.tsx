@@ -1,5 +1,6 @@
 import { TaskCard } from "entities/task"
 import { useTasks } from ".."
+import { FilterButton } from "shared/tasks"
 
 export const TaskList = () => {
     const { tasks, removeTask, setFilter } = useTasks()
@@ -7,11 +8,7 @@ export const TaskList = () => {
 
     return (
         <div>
-            <div>
-                <button onClick={() => setFilter('all')}>Все</button>
-                <button onClick={() => setFilter('completed')}>Завершенные</button>
-                <button onClick={() => setFilter('incomplete')}>Активные</button>
-            </div>
+            <FilterButton onFilterChange={setFilter} />
             <ul>
                 {tasks.map(task => (
                     <li key={task.id}>
