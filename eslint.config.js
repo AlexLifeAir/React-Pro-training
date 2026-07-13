@@ -8,18 +8,21 @@ import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
 
 export default [
+    {
+        ignores: ["eslint.config.js", "dist", "build", "node_modules"],
+    },
     js.configs.recommended,
     prettier,
-
     {
-        files: ["**/*.{js,jsx,ts,tsx}"],
+        files: ["src/**/*.{js,jsx,ts,tsx}"],
 
         languageOptions: {
             parser: tsParser,
             ecmaVersion: 2020,
             sourceType: "module",
             parserOptions: {
-                project: "./tsconfig.json",
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
             },
         },
 
