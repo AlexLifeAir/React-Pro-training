@@ -1,5 +1,5 @@
 ```markdown
-# LESSON-3 — Оптимизация производительности в React.
+# LESSON-3 —  RTK Query
 Ветка: lesson-3
 
 ## Запуск
