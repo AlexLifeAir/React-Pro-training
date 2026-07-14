@@ -1,11 +1,13 @@
 .task {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 8px 8px 16px #c5c5cc,
+        -8px -8px 16px #ffffff;
+    transition: box-shadow 0.3s ease;
+    margin-top: 2rem;
+}
+
+.task:hover {
+    box-shadow: 12px 12px 24px #c5c5cc,
+        -12px -12px 24px #ffffff;
 }

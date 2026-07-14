@@ -8,7 +8,7 @@ type TaskCardProps = {
 export const TaskCard: React.FC<TaskCardProps> = memo(({ task }) => {
     return (
         <div className={styles.task}>
-            <h1>{task.title}</h1>
+            <h1>{task.todo}</h1>
             <p>{task.completed}</p>
         </div>
     )
