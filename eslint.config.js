@@ -1,22 +1,72 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from "@eslint/js";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import importPlugin from "eslint-plugin-import";
+import boundaries from "eslint-plugin-boundaries";
+import tsParser from "@typescript-eslint/parser";
+import prettier from "eslint-config-prettier";
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      globals: globals.browser,
+export default [
+    {
+        ignores: ["eslint.config.js", "dist", "build", "node_modules"],
     },
-  },
-])
+    js.configs.recommended,
+    prettier,
+    {
+        files: ["src/**/*.{js,jsx,ts,tsx}"],
+
+        languageOptions: {
+            parser: tsParser,
+            ecmaVersion: 2020,
+            sourceType: "module",
+            parserOptions: {
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
+
+        plugins: {
+            react,
+            "react-hooks": reactHooks,
+            "jsx-a11y": jsxA11y,
+            import: importPlugin,
+            boundaries,
+        },
+
+        settings: {
+            react: {
+                version: "detect",
+            },
+
+            "boundaries/elements": [
+                { type: "shared", pattern: "src/shared/*" },
+                { type: "entities", pattern: "src/entities/*" },
+                { type: "features", pattern: "src/features/*" },
+                { type: "widgets", pattern: "src/widgets/*" },
+                { type: "pages", pattern: "src/pages/*" },
+                { type: "app", pattern: "src/app/*" },
+            ],
+        },
+
+        rules: {
+            ...react.configs.recommended.rules,
+            ...reactHooks.configs.recommended.rules,
+            ...jsxA11y.configs.recommended.rules,
+            ...importPlugin.configs.recommended.rules,
+
+            "boundaries/element-types": [
+                "error",
+                {
+                    default: "disallow",
+                    rules: [
+                        { from: "features", allow: ["shared", "entities"] },
+                        { from: "entities", allow: ["shared"] },
+                        { from: "widgets", allow: ["shared", "features", "entities"] },
+                        { from: "pages", allow: ["widgets", "features", "entities", "shared"] },
+                    ],
+                },
+            ],
+        },
+    },
+];
