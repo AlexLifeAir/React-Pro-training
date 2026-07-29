@@ -27,22 +27,22 @@
     // "baseUrl": "src",
     "paths": {
       "shared/*": [
-        "./src/shared/*"
+        "./src/6-shared/*"
       ],
       "entities/*": [
-        "./src/entities/*"
+        "./src/5-entities/*"
       ],
       "features/*": [
-        "./src/features/*"
+        "./src/4-features/*"
       ],
       "widgets/*": [
-        "./src/widgets/*"
+        "./src/3-widgets/*"
       ],
       "pages/*": [
-        "./src/pages/*"
+        "./src/2-pages/*"
       ],
       "app/*": [
-        "src/1-app/*"
+        "./src/1-app/*"
       ]
     }
   },
