@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "esnext",
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
+    "module": "esnext",
+    "types": [
+      "vite/client"
+    ],
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    // "baseUrl": "src",
+    "paths": {
+      "shared/*": [
+        "./src/6-shared/*"
+      ],
+      "entities/*": [
+        "./src/5-entities/*"
+      ],
+      "features/*": [
+        "./src/4-features/*"
+      ],
+      "widgets/*": [
+        "./src/3-widgets/*"
+      ],
+      "pages/*": [
+        "./src/2-pages/*"
+      ],
+      "app/*": [
+        "./src/1-app/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
