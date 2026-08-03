@@ -23,6 +23,5 @@ export const WebSocketLogger = () => {
     return (
         <>
         <h1>WebSocketLogger</h1>
-        <h2>Соединений: {connectCountRef.current}</h2>
         </>)
 };
