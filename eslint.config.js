@@ -56,6 +56,8 @@ export default [
                 { type: "pages", pattern: "src/2-pages/*" },
                 { type: "app", pattern: "src/1-app/*" },
             ],
+            // сохраняем старое поведение: проверяем только import
+            "boundaries/dependency-nodes": ["import"],
         },
 
         rules: {
@@ -75,16 +77,49 @@ export default [
                 },
             ],
 
-            "boundaries/element-types": [
+            "boundaries/dependencies": [
                 "error",
                 {
                     default: "disallow",
                     rules: [
-                        { from: "app", allow: ["pages", "widgets", "features", "entities", "shared"] },
-                        { from: "features", allow: ["shared", "entities"] },
-                        { from: "entities", allow: ["shared"] },
-                        { from: "widgets", allow: ["shared", "features", "entities"] },
-                        { from: "pages", allow: ["widgets", "features", "entities", "shared"] },
+                        {
+                            from: { type: "app" },
+                            allow: [
+                                { to: { type: "pages" } },
+                                { to: { type: "widgets" } },
+                                { to: { type: "features" } },
+                                { to: { type: "entities" } },
+                                { to: { type: "shared" } },
+                            ],
+                        },
+                        {
+                            from: { type: "features" },
+                            allow: [
+                                { to: { type: "shared" } },
+                                { to: { type: "entities" } },
+                            ],
+                        },
+                        {
+                            from: { type: "entities" },
+                            allow: [{ to: { type: "shared" } }],
+                        },
+                        {
+                            from: { type: "widgets" },
+                            allow: [
+                                { to: { type: "shared" } },
+                                { to: { type: "features" } },
+                                { to: { type: "entities" } },
+                            ],
+                        },
+                        {
+                            from: { type: "pages" },
+                            allow: [
+                                { to: { type: "widgets" } },
+                                { to: { type: "features" } },
+                                { to: { type: "entities" } },
+                                { to: { type: "shared" } },
+                            ],
+                        },
                     ],
                 },
             ],
