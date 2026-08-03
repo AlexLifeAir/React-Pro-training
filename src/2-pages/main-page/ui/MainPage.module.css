@@ -1,0 +1,112 @@
+.page {
+  --ink: #1c2b2a;
+  --muted: #5a6f6c;
+  --accent: #0d7a6f;
+  --line: rgb(28 43 42 / 0.12);
+  --surface: rgb(255 255 255 / 0.82);
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 2rem 1.25rem 3rem;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 70% 45% at 8% 0%, #c9e8df 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, #d5e4f4 0%, transparent 50%),
+    linear-gradient(180deg, #eef4f1 0%, #e4ecf2 100%);
+}
+
+.header {
+  width: min(100%, 42rem);
+  margin: 0 auto 1.75rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.list {
+  width: min(100%, 42rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.section {
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgb(28 43 42 / 0.06);
+  overflow: hidden;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+  background: rgb(13 122 111 / 0.05);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.4rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.sectionBody {
+  padding: 1.1rem;
+}
+
+.sectionBody > * + * {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1.25rem 0.85rem 2rem;
+  }
+
+  .sectionHead,
+  .sectionBody {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+}
